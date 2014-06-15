@@ -1,0 +1,36 @@
+.curtained {
+  @size : 400px;
+
+  display: block;
+  width: @size;
+  height: @size;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+
+  h1, p {
+    text-align: center;
+    color: black;
+  }
+  
+  .img-wrap {
+    display: block;
+    position: absolute;
+    width: 184%;
+    left: -42%;
+    height: 100%;
+    z-index:2;
+    transform-origin: left top;
+    transition: transform 400ms ease-out;
+    img {
+      width: 100%;
+      .absCenter();
+    }
+  }  
+  &:hover {
+    text-decoration: none;
+    .img-wrap {
+      transform: rotate(90deg);
+    }
+  }
+}

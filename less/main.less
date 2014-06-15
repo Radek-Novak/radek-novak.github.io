@@ -1,0 +1,170 @@
+@menu-height: 51px;
+ body {
+    padding-top: @menu-height;
+    font-family:'Lato', sans-serif;
+}
+section {
+    padding-top: @menu-height;
+    font-size: 20px;
+    .container, .container-fluid {
+        max-width: 960px;
+        padding-bottom: 100px;
+        h1 {
+            text-align: center;
+        }
+        p {
+            text-align: center;
+            margin: 40px 0;
+        }
+    }
+}
+header {
+    .nav {
+        text-transform: uppercase;
+    }
+}
+#about {
+    .bg('st.anthony2x2.png', 0 0, repeat-x);
+    padding: 8% 0;
+    background-attachment: fixed;
+    .container {
+        position: relative;
+        .jumbotron {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 0;
+            p {
+                text-align: justify;
+            }
+        }
+    }
+}
+#skills {
+    .lists {
+        margin: 50px 0;
+    }
+    ul {
+        margin-bottom: 0;
+        li {
+            @lh: 30px;
+            line-height: @lh;
+            list-style-type: none;
+            position: relative;
+            &:before {
+                @bullw: 20px;
+                @bullh: 0.43*@bullw;
+                content:' ';
+                background-image: url("@{imagesDir}diamond-bullet.png");
+                background-repeat: no-repeat;
+                background-size: @bullw auto;
+                width: @bullw;
+                height: @lh;
+                position: absolute;
+                background-position: 0 center;
+                left: -1.5*@bullw;
+                display: block;
+            }
+        }
+    }
+    p {
+        font-size: 20px;
+        font-style: italic;
+    }
+}
+#work {
+    background-color: #eeeeef;
+    //margin-bottom: 60px;
+
+    .curtained {
+        margin: 0 auto;
+    }
+    .reference {
+        ul {
+            .clear();
+            max-height: 500px;
+            width: auto;
+            li {
+                display: block;
+                float: left;
+                margin: 25px;
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+        }
+        // scroller //
+        /**/
+        .mCSB_scrollTools {
+            @dragger_size: 60px;
+            height: @dragger_size;
+
+            .mCSB_draggerContainer {
+                width: 50%;
+                margin: 0 auto;
+                .mCSB_draggerRail {
+                    border-bottom: 2px solid #ddd;
+                    background: none;
+                    margin-top: @dragger_size/2 - 1px;
+                }
+                .mCSB_dragger {
+                    .bg('dragger.svg');
+                    .size(@dragger_size, @dragger_size);
+                    background-size: @dragger_size @dragger_size;
+
+                    .mCSB_dragger_bar {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+    .other {
+        margin: 60px 0 0;
+    }
+}
+#contact {
+    .container {
+        p {
+            margin: 120px 0 200px;
+        }
+    }
+}
+footer {
+    @charh: 80px;
+    @footh: 100px;
+    height: @footh;
+    line-height: @footh;
+    background-color: #222;
+    font-size: @charh;
+    a {
+        .size(@charh);
+        color: white;
+        display: inline-block;
+        line-height: @charh;
+        opacity: 0.7;
+        transition: opacity 500ms linear;
+        i {
+            float: left;
+            vertical-align: middle;
+        }
+        img {
+            .size(100%);
+        }
+        &:hover {
+            color: white;
+            opacity: 1;
+            //box-shadow: 0 0 33px 33px rgba(255, 255, 255, 0.5);
+        }
+    }
+    .codepen-logo {
+        .bg("codepen-logo.png");
+        .size(@charh);
+        background-size: @charh @charh;
+        display: inline-block;
+    }
+    .container {
+        text-align: center;
+        line-height: 120px;
+        height: 100px;
+        overflow: hidden;
+    }
+}

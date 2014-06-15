@@ -1,0 +1,141 @@
+#main {
+	font-family: "Ubuntu", Tahoma;
+	font-size: 16px;
+	background-color: white;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 1000px;
+}
+
+#main h1 {
+	background-color: #DDD;
+	font-size: 18px;
+	text-align: center;
+	font-weight: bold;
+	width: 100%;
+	margin: 0;
+	padding: 2px;
+	border-radius: 2px;
+}
+ul {
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+
+}
+@media (min-width: 900px) {
+  #main h1 {
+  	background-color: rgba(0,0,0,0);
+    display: block;
+    float: left;
+    width: 20%;
+    height: 100%;
+    padding:0 20px 0 0;
+    font-size: 18px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+  }
+  #main section ul/*, #main #personal */{
+  	display: block;
+  	float: left;
+  	width: calc(80% - 2px);
+  	margin: 0 0 10px 0;
+  	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+
+  }
+
+  #main #education ul, #main #courses ul{
+  	padding-left: 14px;
+  }
+  #main #jobs ul {
+  	padding-left: 0;
+  }
+  #main section {
+  	width: 100%;
+  	overflow: auto;
+  	margin-bottom: 15px;
+  }
+
+}
+
+#main li {
+	list-style-type: square;
+}
+#main a {
+	text-decoration: none;
+	color: #250;
+}
+#main a:hover {
+	text-decoration: underline;
+}
+#main a:visited {
+	color: #250;
+}
+#main a:active {
+	color: #D00;
+	text-decoration: none;
+}
+#main details {
+	display: inline;
+}
+/* personal info */
+#personal {
+	text-align: right;
+}
+#personal li {
+	list-style-type: none;
+}
+/* jobs */
+#main #jobs li {
+	list-style-type: none;
+}
+#jobs time {
+	display: inline-block;
+	text-align: right;
+	width: 65px;
+	margin-right: 1em;
+}
+/* education*/
+
+/* online courses */
+.course-descr {
+	font-style: italic;
+	color: rgba(0,0,0,0.6);
+}
+.course-descr:hover {
+	font-style: italic;
+	color: rgba(0,0,0,1);
+}
+#courses li {
+	list-style-type: square;
+}
+/* computer */
+
+#computers ul, #languages ul {
+	margin: 10px 20px 10px 20px;
+	padding: 0;
+}
+#computers li, #languages li{
+	list-style-type: none;
+}
+
+.rating {
+    background-color: white;
+    width: 100%;
+    border: 1px solid black;
+    margin-bottom: 1px;
+}
+.inside {
+    background-color: #BF9;
+
+    font-size: 14px;
+    font-weight: normal;
+    padding: 1px;
+}
+p {
+	margin-left: 20px;
+}
