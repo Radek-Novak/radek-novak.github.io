@@ -1,0 +1,75 @@
+<!doctype html>
+<title>Caleido</title>
+<!-- <script src="bower_components/jquery/dist/jquery.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<style>
+	body {
+		background-color: #EEE;
+		text-align: center;
+		font-family: Helvetica Neue, Helvetica, sans-serif;
+	}
+	canvas {
+		width: 500px;
+		height: 500px;
+		background-color: #fff;
+	}
+	.controls {
+		margin-bottom: 20px;
+	}
+	.tip-preview {
+		width: 80px;
+		height: 80px;
+		background-color: #fff;
+		margin: 0 auto;
+		position: relative;
+	}
+	.tip-preview-inside {
+		border-radius: 50%;
+		position: absolute;
+		top: 0;left: 0;bottom: 0;right: 0;
+		margin: auto;
+	}
+</style>
+
+
+
+<div class="controls">
+	<div class="controls-tip">
+		<div class="tip-preview">
+			<div class="tip-preview-inside"></div>
+		</div>
+		<input type="color" value="#BADA55">
+		<input type="range" value="5">
+	</div>
+	<label for="copies">copies <input id="copies" type="number" min="0" max="100" value="33"></label>
+	<br>
+	<button class="js-clear">clear</button>
+</div>
+
+<canvas width="1000" height="1000"></canvas>
+
+<script src="CanvasDraw.js"></script>
+<script src="Polar.js"></script>
+<script src="caleido.js"></script>
+
+<script>
+	var $tip = $('.tip-preview-inside');
+	$('input[type="color"]').on('change', function (e) {
+		var $val = $(this).val();
+		Draw.set('strokeStyle', $val);
+		$tip.css('background', $val);
+	}).trigger('change');
+
+	$('input[type="range"]').on('change', function (e) {
+		var $val = $(this).val();
+		Draw.set('lineWidth', $val);
+		$tip.css({width: Math.round($val/2) + 'px', height: Math.round($val/2) + 'px'});
+	}).trigger('change');
+
+	$('input[type="number"]').on('change', function (e) {
+		Draw.pieces($(this).val());
+	}).trigger('change');
+
+	$('.js-clear').click(Draw.clear);
+</script>

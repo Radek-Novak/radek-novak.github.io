@@ -9,8 +9,7 @@ var minhtml = require('gulp-minify-html');
 gulp.task('html', function() {
   return gulp.src('./html/*.html')
     .pipe(minhtml())
-    .pipe(gulp.dest('./'))
-    .pipe(browserSync.reload());
+    .pipe(gulp.dest(''));
 });
 
 gulp.task('sass', function() {
@@ -31,7 +30,7 @@ gulp.task('serve', function() {
   });
 	gulp.watch('./scss/*.scss', ['sass']);
   gulp.watch('./img/icons/*.png', ['sprite']);
-	gulp.watch('./html/*.html', ['html']);
+	gulp.watch('./html/*.html', ['html', browserSync.reload]);
 });
 
 //gulp.task('default', ['serve'], function () {});
