@@ -1,0 +1,32 @@
+h1 
+  text-align center
+  font-size 40px
+
+.box-list 
+  text-align center
+  margin 0 5%
+
+.box 
+  $gutterWidth = 10px;
+  background-color #121
+  color #aba
+  //border 1px solid black
+    
+  display inline-block
+  
+  width "calc(25% - %s)" % $gutterWidth
+  @media (max-width 1024px)
+    width "calc(33% - %s)" % $gutterWidth
+  @media (max-width 640px)
+    width "calc(50% - %s)" % $gutterWidth
+  @media (max-width 480px)
+    width 100%
+  
+.box__content 
+  text-align justify
+  padding 1.5em 1em
+  
+.box__image
+  margin 0
+.box img 
+  max-width 100%
