@@ -1,50 +1,67 @@
-[{
-	"title": "caleid",
-	"link": "caleid",
-	"text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt voluptates rerum sequi distinctio id eveniet consequuntur aspernatur? Beatae voluptas, rem animi quaerat aliquid vero, deserunt ullam amet maiores blanditiis, fuga.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi quos voluptatem laborum sint, eos quaerat dignissimos dicta expedita saepe quas et, recusandae esse natus placeat! Consectetur, pariatur illum nostrum culpa!a caleid",
-	"img": "http://placehold.it/300x200"
+[
+{
+	"title": "Shouter",
+	"link": "Shouter",
+	"text": "A typing game inspired by Crimsonland's Type'o'shooter",
+	"img": "/images/shouter-screen.jpg",
+	"tags": ["javascript"]
+},{
+	"title": "Pendulum",
+	"link": "spirograph",
+	"text": "Draw complex shapes",
+	"img": "/images/pendulum-screen.jpg",
+	"tags": ["javascript", "CSS3"]
+},{
+	"title": "Caleidoscope",
+	"link": "/stuff/caleido/",
+	"text": "Drawing",
+	"img": "/images/caleido.png",
+	"tags": ["javascript"]
 },
 {
-	"title": "caleido",
-	"link": "caleido",
-	"text": "Lorem ipsum dolor sit Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus temporibus, odit doloremque maiores reprehenderit ad voluptates, deserunt praesentium assumenda repellat debitis labore! Error odio deserunt temporibus neque eum illo dicta. placeat expedita nisi ipsum pariatur rem, libero tempora ducimus sapiente. Culpa reiciendis beatae fugit at ducimus magnam ipsa quibusdam quis.a caleido",
-	"img": "http://placehold.it/300x200"
+	"title": "Circles",
+	"link": "/stuff/circles/",
+	"text": "Repetitive circle structures",
+	"img": "/images/circles.png",
+	"tags": ["processing"]
 },
-
 {
-	"title": "caleid",
-	"link": "caleid",
-	"text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, commodi architecto dolorum fugiat recusandae error, deserunt alias quaerat vel eos unde iusto sint facere aperiam, quis aliquid? Tenetur, ea perspiciatis?a caleid",
-	"img": "http://placehold.it/300x200"
-},{
-	"title": "caleid",
-	"link": "caleid",
-	"text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus sapiente, veniam aliquam iure rerum aspernatur excepturi facilis repellendus omnis vitae, earum eos? Veniam esse aliquid natus, voluptates eos fuga sequi!a caleid",
-	"img": "http://placehold.it/300x200"
-},{
-	"title": "caleid",
-	"link": "caleid",
-	"text": "Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit.adipisicing elit. Consequuntur numquam nihil voluptatum et dolore deleniti molestiae unde beatae a laudantium quibusdam, nemo repellat, repellendus omnis ipsam tempora animi esse voluptas.a caleid",
-	"img": "http://placehold.it/300x200"
-},{
-	"title": "caleid",
-	"link": "caleid",
-	"text": "Lorem ipsum dolor sit amet, consectetur  odio eaque voluptates laboriosam, alias nisi nulla omnis quaerat voluptatem, dolore perferendis suscipit! Repellat, quibusdam repellendus omnis asperiores?a caleid",
-	"img": "http://placehold.it/300x200"
-}, {
-	"title": "caleido",
-	"link": "caleido",
-	"text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error deserunt placeat expedita nisi ipsum pariatur rem, libero tempora ducimus sapiente. Culpa reiciendis beatae fugit at ducimus magnam ipsa quibusdam quis.a caleido",
-	"img": "http://placehold.it/300x200"
-}, {
-	"title": "caleido",
-	"link": "caleido",
-	"text": "Lorem  pariatur rem, libero tempora ducimus sapiente. Culpa reiciendis beatae fugit at ducimus magnam ipsa quibusdam quis.a caleido",
-	"img": "http://placehold.it/300x200"
-}, {
-	"title": "caleido",
-	"link": "caleido",
-	"text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error deserunt placeat expedita nisi ipsum pariatur rem, libero tempora ducimus sapiente. Culpa reiciendis beatae fugit at ducimus magnam ipsa quibusdam quis.a caleido",
-	"img": "http://placehold.it/300x200"
+	"title": "Mazal",
+	"link": "/stuff/mazal/",
+	"text": "Drawing",
+	"img": "/images/mazal.png",
+	"tags": ["processing"]
+},
+{
+	"title": "One pixel cinema",
+	"link": "/stuff/one_pixel_cinema/",
+	"text": "Drawing",
+	"img": "/images/one-pixel-cinema.png",
+	"tags": ["processing"]
 }
+,
+{
+	"title": "Unknown Pleasures Cover",
+	"link": "http://codepen.io/RDKNVK/full/pJgPyp/",
+	"text": "Joy Division's Unknown Pleasures cover recreated in d3 and animated",
+	"img": "/images/unknown-pleasures.png",
+	"tags": ["d3"]
+}
+,
+{
+	"title": "Spinning squares",
+	"link": "http://codepen.io/RDKNVK/full/hKADc/",
+	"text": "css3 animation",
+	"img": "/images/spinning_squares.png",
+	"tags": ["CSS3"]
+},
+{
+	"title": "Snakes",
+	"link": "http://codepen.io/RDKNVK/full/mFryH/",
+	"text": "css3 animation",
+	"img": "/images/snakes.png",
+	"tags": ["CSS3"]
+}
+
+
 ]

@@ -5,6 +5,6 @@ var css = require('./main.styl');
 
 React.render( 
   <BoxContainer url = "links.json" /> ,
-  // document.getElementById('content')
-  document.body
+  document.getElementById('content')
+  // document.body
 );
