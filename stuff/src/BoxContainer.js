@@ -3,20 +3,30 @@ var BoxList = require('./BoxList.js');
 
 
 var BoxContainer = React.createClass({
-  // var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
   loadCommentsFromServer: function() {
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      success: function(data) {
-        this.setState({
-          data: data
+    // $.ajax({
+    //   url: this.props.url,
+    //   dataType: 'json',
+    //   success: function(data) {
+    //     this.setState({
+    //       data: data
+    //     });
+    //   }.bind(this),
+    //   error: function(xhr, status, err) {
+    //     console.error(this.props.url, status, err.toString());
+    //   }.bind(this)
+    // });
+    var self = this;
+    fetch(this.props.url)
+      .then(function(response) {
+        return response.json()
+      }).then(function(json) {
+        self.setState({
+          data: json
         });
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
+      }).catch(function(ex) {
+        console.error('parsing failed', ex)
+      })
   },
   getInitialState: function() {
     return {
