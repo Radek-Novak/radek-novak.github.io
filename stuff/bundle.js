@@ -13550,17 +13550,13 @@
 	    return React.createElement(
 	      'div',
 	      { className: 'box-container' },
-	      React.createElement(
-	        'h1',
-	        null,
-	        ' Stuff '
-	      ),
 	      React.createElement(BoxList, { data: this.state.data })
 	    );
 	  }
 	});
 
 	module.exports = BoxContainer;
+	/*<h1> Stuff </h1> */
 
 /***/ },
 /* 91 */

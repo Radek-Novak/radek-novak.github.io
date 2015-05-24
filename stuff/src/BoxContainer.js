@@ -29,7 +29,7 @@ var BoxContainer = React.createClass({
   render: function() {
     return ( 
       <div className = "box-container">
-        <h1> Stuff </h1> 
+        {/*<h1> Stuff </h1> */}
         <BoxList data = {this.state.data}/> 
       </div>
   );
