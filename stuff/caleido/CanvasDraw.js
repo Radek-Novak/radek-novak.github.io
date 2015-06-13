@@ -93,7 +93,7 @@ function CanvasDraw (options) {
     };
 
     options.canvas.touchstart = function (e) {
-        var touches = e.originalEvent.targetTouches;
+        var touches = e.targetTouches;
         
         for (var i = 0, ii = touches.length; i < ii; i++) {
             options.drawFn(touches[i].clientX - currentOffset.left, touches[i].clientY - currentOffset.top);
@@ -108,7 +108,7 @@ function CanvasDraw (options) {
             touchend(e)
     };
     options.canvas.touchmove = function (e) {
-        var touches = e.originalEvent.targetTouches;
+        var touches = e.targetTouches;
 
         for (var i = 0, ii = touches.length; i < ii; i++) {
             options.drawFn(touches[i].clientX - currentOffset.left, touches[i].clientY - currentOffset.top);
