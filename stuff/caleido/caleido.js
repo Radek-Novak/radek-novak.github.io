@@ -47,7 +47,7 @@ var Draw = {
 };
 
 var canvasHandling = new CanvasDraw({
-    $canvas: $canvas, 
+    canvas: document.querySelector('canvas'), 
     drawFn: Draw.line,
     drawStopFn: Draw.stop
 });
