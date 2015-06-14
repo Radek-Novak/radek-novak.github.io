@@ -1,0 +1,139 @@
+<!doctype html>
+<title>Silk drawing</title>
+<style>
+html, body {
+	margin: 0;
+	padding: 0;
+	min-width: 100%;
+	min-height: 100%;
+}
+body {
+	overflow: hidden;
+}
+canvas {
+    max-height: 100%;
+    max-width: 100%;
+    border: 1px solid #eee;
+    cursor: crosshair;
+}
+</style>
+<canvas></canvas>
+<script src="CanvasDraw.js"></script>
+<script src="../src/vendor/dat.gui.min.js"></script>
+
+<script>
+var canvas = document.querySelector('canvas');
+
+canvas.width = window.innerWidth*2;
+canvas.height = window.innerHeight*2;
+canvas.style.height = window.innerHeight;
+canvas.style.width = window.innerWidth
+
+var ctx = canvas.getContext('2d');
+ctx.lineCap = 'round';
+
+var math = {
+	magn: function (x1, y1, x2, y2) {
+		var x = Math.abs(x1 - x2)
+		var y = Math.abs(y1 - y2)
+		return Math.sqrt(x*x + y*y)
+	},
+	angle: function (x1, y1, x2, y2) {
+        var x = Math.abs(x2 - x1)
+        var y = Math.abs(y2 - y1)
+        if (x === 0)
+            return 0;
+
+		return (Math.atan( y / x ) * 180 / Math.PI)*2
+	}
+
+}
+
+var Draw = {
+    DPI_MULTIPLIER: 2,
+    points: [],
+    last: {
+        x: undefined,
+        y: undefined
+    },
+
+    distance: 50,
+    line_color: 'rgba(0,0,0,0)',
+    beam_color: 'rgba(56,59,107,0.1)',
+    beam_skip: 0,
+    rainbow: false,
+    clear: function() {
+        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        Draw.points = [];
+    },
+    save: function () {
+        var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
+        window.location.href = image
+    },
+    stop: function() {
+        Draw.last.x = undefined;
+        Draw.last.y = undefined;
+    },
+    drawLine: function(x1, y1, x2, y2) {
+        ctx.beginPath();
+
+        ctx.strokeStyle = Draw.line_color;
+        ctx.moveTo(x1 * Draw.DPI_MULTIPLIER, y1 * Draw.DPI_MULTIPLIER);
+        ctx.lineTo(x2 * Draw.DPI_MULTIPLIER, y2 * Draw.DPI_MULTIPLIER);
+        ctx.stroke();
+
+    },
+    drawWeakLine: function(x1, y1, x2, y2, color) {
+        ctx.beginPath();
+
+        if (color && Draw.rainbow)
+            ctx.strokeStyle = color
+        else 
+            ctx.strokeStyle = Draw.beam_color
+
+        // console.log(color)
+        ctx.moveTo(x1 * Draw.DPI_MULTIPLIER, y1 * Draw.DPI_MULTIPLIER);
+        ctx.lineTo(x2 * Draw.DPI_MULTIPLIER, y2 * Draw.DPI_MULTIPLIER);
+        ctx.stroke();
+
+    },
+    line: function(x, y) {
+        if (x !== undefined && y !== undefined) {
+            Draw.drawLine(Draw.last.x, Draw.last.y, x, y);
+        }
+
+        Draw.last.x = x;
+        Draw.last.y = y;
+        Draw.points.push({x: x, y: y});
+
+        for (var i = 0; i < Draw.points.length; i += Draw.beam_skip + 1) {
+        	var cur = Draw.points[i]
+        	var curMagn = math.magn(x, y, cur.x, cur.y)
+        	if (curMagn < Draw.distance) {
+	        	Draw.drawWeakLine(x, y, cur.x, cur.y, 'hsla(' + Math.round(math.angle(x,y,cur.x, cur.y)) + ', 50%, 50%,0.1)')
+        	}
+        };
+    },
+    set: function(option, value) {
+        // lineCap, strokeStyle
+        ctx[option] = value;
+    },
+};
+
+var gui = new dat.GUI();
+
+gui.addColor(Draw, 'line_color');
+gui.addColor(Draw, 'beam_color');
+gui.add(Draw, 'distance', 0, 500);
+gui.add(Draw, 'beam_skip', 0, 20).step(1);
+gui.add(Draw, 'rainbow');
+gui.add(Draw, 'save');
+gui.add(Draw, 'clear');
+
+
+var canvasHandling = new CanvasDraw({
+    canvas: canvas,
+    drawFn: Draw.line,
+    drawStopFn: Draw.stop
+});
+</script>

@@ -8,9 +8,16 @@
 },{
 	"title": "Pendulum",
 	"link": "spirograph",
-	"text": "Draw complex shapes",
+	"text": "Draw complex curves",
 	"img": "/images/pendulum-screen.jpg",
 	"tags": ["javascript", "CSS3"]
+},{
+	"title": "Silk Drawing",
+	"link": "Silk-draw",
+	"text": "",
+	"img": "/images/silk.jpg",
+	"date": "2015-06-13",
+	"tags": ["javascript"]
 },{
 	"title": "Caleidoscope",
 	"link": "/stuff/caleido/",
