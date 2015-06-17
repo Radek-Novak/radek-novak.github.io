@@ -61,6 +61,8 @@ var Draw = {
     line_color: 'rgba(0,0,0,0)',
     beam_color: 'rgba(56,59,107,0.1)',
     beam_skip: 0,
+    beam_length: 0.9,
+    cubist: false,
     rainbow: false,
     clear: function() {
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
@@ -110,7 +112,43 @@ var Draw = {
         	var cur = Draw.points[i]
         	var curMagn = math.magn(x, y, cur.x, cur.y)
         	if (curMagn < Draw.distance) {
-	        	Draw.drawWeakLine(x, y, cur.x, cur.y, 'hsla(' + Math.round(math.angle(x,y,cur.x, cur.y)) + ', 50%, 50%,0.1)')
+                var x1 = x;
+                var x2 = cur.x;
+                var y1 = y;
+                var y2 = cur.y;
+                    
+                if (Draw.beam_length !== 1){
+                    if (x1 < x2){
+                        var diff = x2 - x1;
+                        x1 = x1 + Draw.beam_length * diff;
+                        x2 = x2 - Draw.beam_length * diff;
+                        
+                    } else {
+                        var diff = x1 - x2;
+                        x1 = x1 - Draw.beam_length * diff;
+                        x2 = x2 + Draw.beam_length * diff;
+                    }
+                    if (y1 < y2){
+                        var diff = y2 - y1;
+                        y1 = y1 + Draw.beam_length * diff;
+                        y2 = y2 - Draw.beam_length * diff;
+                        
+                    } else {
+                        var diff = y1 - y2;
+                        y1 = y1 - Draw.beam_length * diff;
+                        y2 = y2 + Draw.beam_length * diff;
+                    }
+
+                }
+                if (Draw.cubist) {
+                    x1 = x < cur.x ? x : cur.x;
+                    x2 = x >= cur.x ? x : cur.x;
+                    y1 = y < cur.y ? y : cur.y;
+                    y2 = y >= cur.y ? y : cur.y;
+                    
+                }
+                // Draw.drawWeakLine(x, y, cur.x, cur.y, 'hsla(' + Math.round(math.angle(x,y,cur.x, cur.y)) + ', 50%, 50%,0.1)')
+	        	Draw.drawWeakLine(x1,y1, x2,y2, 'hsla(' + Math.round(math.angle(x,y,cur.x, cur.y)) + ', 50%, 50%,0.1)')
         	}
         };
     },
@@ -126,7 +164,9 @@ gui.addColor(Draw, 'line_color');
 gui.addColor(Draw, 'beam_color');
 gui.add(Draw, 'distance', 0, 500);
 gui.add(Draw, 'beam_skip', 0, 20).step(1);
+gui.add(Draw, 'beam_length', 0, 1);
 gui.add(Draw, 'rainbow');
+gui.add(Draw, 'cubist');
 gui.add(Draw, 'save');
 gui.add(Draw, 'clear');
 
