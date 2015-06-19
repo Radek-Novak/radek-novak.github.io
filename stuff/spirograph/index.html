@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="utf-8">
+    <title>Spirograph</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta name="robots" content="index,follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="./styles/jquery-ui.min.css" rel="stylesheet">
+    <link href="./styles/style.css" rel="stylesheet" media="screen">
+    <link href="./styles/print.css" rel="stylesheet" media="print">
+
+    <!--[if lt IE 9]>
+        <script src="./scripts/lib/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <header>
+
+    </header>
+
+    <main>
+        <canvas></canvas>
+        <div class="a">
+            <div class="b">
+                <div class="c">
+                    <div class="draw">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="controls">
+            <div class="buttons">
+                <button class="clear">clear</button>
+                <button class="save">save</button>
+                <button class="pause">pause</button>
+            </div>
+            <div class="rods-control">
+                <ul class="spinners">
+                    <li>
+                        <input id="spin-a" class="spinner" name="spinner-a" value="4">
+                    </li>
+                    <li>
+                        <input id="spin-b" class="spinner" name="spinner-b" value="2">
+                    </li>
+                    <li>
+                        <input id="spin-c" class="spinner" name="spinner-c" value="1.3">
+                    </li>
+                </ul>
+                <div id="rodOpacitySlider"></div>
+
+                <label for="spin-a"></label>
+                <label for="spin-b"></label>
+                <label for="spin-c"></label>
+            </div>
+        </div>
+    </main>
+    <footer>
+    </footer>
+    <script src="./scripts/lib/jquery.js"></script>
+    <script src="./scripts/lib/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="./scripts/main.js"></script>
+
+</body>
+
+</html>

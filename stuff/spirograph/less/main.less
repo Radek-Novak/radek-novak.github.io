@@ -1,0 +1,200 @@
+html, body {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+body {
+    background: #dfefef;
+}
+canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    /*width: 100%;
+  height: 100%;*/
+    z-index: -1;
+}
+.controls {
+    @contW: 350px;
+    @contH: 150px;
+    @bord: 2px solid black;
+    border:@bord;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 20px;
+    width: @contW;
+    height: @contH;
+    opacity: 1;
+    transition: opacity 200ms;
+    background-color: #DDD;
+    .clear();
+    [class ^="ui-"], button {
+        background: none;
+        border-radius: initial;
+        border: none;
+        font-family: inherit;
+        font-size: inherit;
+        cursor: pointer;
+    }
+    &:hover {
+        opacity: 1;
+    }
+    .spinners li, button {
+        border: 2px solid black;
+        @marg: 5px;
+        width: 100% - 2*@marg;
+        height: (@contH/3 - @marg) - @marg;
+        margin: @marg auto 0 auto;
+        &:first-child {
+            margin-top: 2*@marg;
+        }
+        &:hover {
+            font-weight: bold;
+        }
+    }
+    .buttons, .rods-control {
+        height: 100%;
+        width: 50%;
+        float: left;
+        display: inline-block;
+    }
+    .buttons {
+        .clear();
+        @marg: 5px;
+        height: 100%;
+        text-align: center;
+        button {
+            border: 2px solid black;
+            border-bottom-right-radius: 3*@marg;
+            border-top-left-radius: 3*@marg;
+            transition: border-radius 0.5s, background-color 0.5s;
+            background-color: #eee;
+            &:hover {
+                border-bottom-right-radius: 0;
+                border-top-left-radius: 0;
+                border-top-right-radius: 3*@marg;
+                border-bottom-left-radius: 3*@marg;
+                background-color: white;
+            }
+        }
+    }
+    .rods-control {
+        position: relative;
+        height: 100%;
+        input {
+        }
+        label {
+        }
+        .spinners {
+            height: 100%;
+            width: 80%;
+            li {
+                display: block;
+            }
+        }
+        .ui-spinner {
+            height: 100% !important;
+            .ui-spinner-input {
+                background-color: #eee;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                text-align: center;
+            }
+            .ui-spinner-up, .ui-spinner-down {
+                height: 105%;
+                width: 40px;
+                box-sizing: content-box;
+                border-left: 2px solid black;
+                margin: -2px;
+                right: 0;
+                left: auto;
+                .ui-button-text {
+                    display: none;
+                }
+                &:after {
+                    content:'-';
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    line-height: 40px;
+                    text-align: center;
+                }
+                &:hover {
+                    background: white;
+                }
+            }
+            .ui-spinner-up {
+                border-right: 2px solid black;
+                right: auto;
+                left: 0;
+                &:after {
+                    content:'+';
+                }
+            }
+        }
+        #rodOpacitySlider {
+            position: absolute;
+            right: 10px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            height: 100% - 20px;
+            background: #eee;
+            border-radius: 50%;
+            .ui-slider-handle {
+                //background-color: black;
+                border: 2px solid black;
+                border-radius: 50%;
+                left: -4px; 
+                margin-left: 0;
+                margin-bottom: -15px;
+            }
+        }
+    }
+}
+#saved {
+    display: none;
+}
+@w: 10px;
+ @h: 100px;
+ .a, .b, .c {
+    width: @w;
+    height: @h;
+    border-radius: @w/2;
+    border: 1px solid black;
+    background-color: white;
+    animation-play-state: paused;
+}
+.a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    animation: rr 4s infinite linear;
+    transform-origin: center bottom;
+}
+.b {
+    animation: rr 2s infinite linear;
+    transform-origin: center top;
+}
+.c {
+    animation: rr 1.3s infinite linear;
+    transform-origin: center bottom;
+}
+.draw, .dot {
+    background-color: red;
+    position: absolute;
+    width: @w / 2;
+    height: @w / 2;
+    border-radius: @w/4;
+}
+@keyframes rr {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
