@@ -1,9 +1,10 @@
 [
 {
 	"title": "Shouter",
-	"link": "Shouter",
+	"link": "/Shouter",
 	"text": "A typing game inspired by Crimsonland's Type'o'shooter",
 	"img": "/images/shouter-screen.jpg",
+	"date": "2013-10-22",
 	"tags": ["javascript"]
 },{
 	"title": "Pendulum",
