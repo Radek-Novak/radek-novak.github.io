@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var sass = require('gulp-sass');
+var stylus = require('gulp-stylus')
 var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync');
 var spritesmith = require('gulp.spritesmith');
@@ -12,10 +12,10 @@ gulp.task('html', function() {
     .pipe(gulp.dest(''));
 });
 
-gulp.task('sass', function() {
-  return gulp.src('./scss/styles.scss')
+gulp.task('stylus', function() {
+  return gulp.src('./styles/styles.styl')
     .pipe(sourcemaps.init())
-      .pipe(sass())
+      .pipe(stylus())
       .pipe(sourcemaps.write('./map'))
     .pipe(mincss())
     .pipe(gulp.dest('./css'))
@@ -28,7 +28,7 @@ gulp.task('serve', function() {
       baseDir: '.'
     }
   });
-	gulp.watch('./scss/*.scss', ['sass']);
+	gulp.watch('./styles/*.styl', ['stylus']);
   gulp.watch('./img/icons/*.png', ['sprite']);
 	gulp.watch('./html/*.html', ['html', browserSync.reload]);
 });

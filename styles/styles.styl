@@ -1,5 +1,4 @@
 html, body {
-  
   height: 100%;
 }
 body {
@@ -11,9 +10,15 @@ main {
   top: 50%;
   transform: translateY(-50%);
 }
+nav
+  h1
+    display none
+    
 .name {
   font-family: Abril Fatface;
   font-size: 40px;
+  margin: 0;
+  font-weight: normal;
 }
 .role {
   font-family: Playfair Display;
@@ -29,27 +34,44 @@ main {
   text-align: center;
   width: 100%;
 }
-a {
+
+a
   font-family: Playfair Display;
   text-decoration: none;
   color: inherit;
+  text-transform: uppercase;
+
+.out {
   border: 1px solid transparent;
   position: relative;
-  text-transform: uppercase;
-    
+
   &:hover:before {
     //text-decoration: underline;
     border: 1px solid black;
     border-top: 0;
     content: '';
     display: inline-block;
-    position: absolute;  
+    position: absolute;
     height: 3px;
     width: 100%;
     bottom: 0;
     left: -1px;
   }
 }
+.header
+  position fixed
+  top 0
+  left 0
+  width 100%
+
+.in
+  &:hover
+    &:before
+      content '<'
+      border 0
+    &:after
+      content '>'
+
 .stuff {
   position: fixed;
   bottom: 5px;
