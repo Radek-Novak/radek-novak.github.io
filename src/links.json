@@ -71,6 +71,13 @@
 	"tags": ["visual", "CSS3"]
 },
 {
+	"title": "Lightning",
+	"link": "stuff/lightning",
+	"text": "",
+	"img": "/images/lightning.jpg",
+	"tags": ["visual", "p5"]
+},
+{
 	"title": "ASCII head",
 	"link": "/stuff/ascii-head",
 	"text": "ASCII art",
