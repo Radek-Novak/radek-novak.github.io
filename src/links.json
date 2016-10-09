@@ -1,6 +1,6 @@
 [{
 	"title": "Shouter",
-	"link": "/stuff/Shouter",
+	"link": "/Shouter",
 	"text": "A typing game inspired by Crimsonland's Type'o'shooter",
 	"img": "/images/shouter-screen.jpg",
 	"date": "2013-10-22",
@@ -14,7 +14,7 @@
 	"tags": ["visual", "CSS3"]
 },{
 	"title": "Silk Drawing",
-	"link": "Silk-draw",
+	"link": "stuff/Silk-draw",
 	"text": "",
 	"img": "/images/silk.jpg",
 	"date": "2015-06-13",
