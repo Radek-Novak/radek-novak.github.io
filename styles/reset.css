@@ -1,0 +1,22 @@
+html {
+  box-sizing: border-box;
+  quotes: "„" "”" "‚" "’";
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  /*text-decoration: underline;*/
+}
+
+li {
+  list-style-type: none;
+}
