@@ -7,7 +7,10 @@ const listItem = (o) => `
     </a>
   </figure>
   <div class="card__content">${o.text}
-    <div class="card__tags">${o.tags.join(', ')}</div>
+    <div class="card__info">
+      <div class="card__tags">${o.tags.join(', ')}</div>
+      <div class="card__date">${o.date ? o.date : ''}</div>
+    </div>
   </div>
 </div>
 `

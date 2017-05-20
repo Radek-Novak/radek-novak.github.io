@@ -98,10 +98,18 @@ h1 {
   text-align: left;
   padding: 1.5em 1em;
 }
+.card__date {
+  white-space: nowrap;
+}
+.card__date,
 .card__tags {
   margin-top: 1em;
   font-size: 0.8em;
   color: #646464;
+}
+.card__info {
+  display: flex;
+  justify-content: space-between;
 }
 .card__figure {
   margin: 0;
