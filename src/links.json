@@ -1,4 +1,11 @@
 [{
+	"title": "Six Walls",
+	"link": "https://radek-novak.github.io/six-walls",
+	"text": "A simple 3D game made in Babylon.js",
+	"img": "/images/six-walls.jpg",
+	"date": "2017-07-22",
+	"tags": ["game", "3D"]
+}, {
 	"title": "Shouter",
 	"link": "/Shouter",
 	"text": "A typing game inspired by Crimsonland's Type'o'shooter",
