@@ -20,8 +20,10 @@
 }
 a {
   text-decoration: none;
-  color: inherit;
   text-transform: uppercase;
+}
+a:hover {
+  text-decoration: none;
 }
 
 .u-center {
@@ -50,7 +52,6 @@ a {
 
 body {
   background-image: url("/images/bg-stripes.png");
-  font-family: Helvetica Neue, Helvetica, sans-serif;
   padding: 0 1rem;
 }
 h1 {
