@@ -18,10 +18,11 @@ for (let btn of btns) {
 }
 
 const createIframe = href => {
+  const { innerWidth, innerHeight } = window;
   const iframe = document.createElement('iframe')
   iframe.setAttribute('src', href)
-  iframe.setAttribute('width', 800)
-  iframe.setAttribute('height', 800)
+  iframe.setAttribute('width', innerWidth > 800 ? 800 : innerWidth)
+  iframe.setAttribute('height', innerHeight > 800 ? 800 : innerHeight)
 
   return iframe
 }
