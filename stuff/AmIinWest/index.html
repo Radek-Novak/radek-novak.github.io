@@ -9,14 +9,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 20px;
+  font-size: 18px;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
 
 button {
   border: 1px solid red;
@@ -26,7 +24,7 @@ button {
 </style>
 
 <button id="start">Am I in East or West Berlin</button>
-<div><ins id="msg"></ins></div>
+<p id="msg"></p>
 
 
 <script>
@@ -2192,8 +2190,9 @@ button {
         } else {
           msg.innerHTML = 'You aren\'t in the West Berlin!'
         }
-      }, () => {
-        msg.innerHTML = 'Unable to retrieve location';
+      }, err => {
+        const {code, message} = err
+        msg.innerHTML = `<b>Unable to retrieve location</b><br /><code>${code}: ${message}</code>`;
       });
     } else {
       msg.innerHTML = 'Geolocation unavailable ☠️'
