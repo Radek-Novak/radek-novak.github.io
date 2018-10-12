@@ -2179,19 +2179,24 @@ button {
 <script>
   const btn = document.getElementById('start');
   const msg = document.getElementById('msg')
+
   btn.addEventListener('click', e => {
+    msg.innerHTML = 'Finding your location...'
+
     if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(function(position) {
+      navigator.geolocation.getCurrentPosition(position => {
         const { latitude, longitude } = position.coords;
         const inWest = inside([latitude, longitude], wallGps)
         if (inWest) {
-          msg.innerText = 'You\'re in West Berlin!'
+          msg.innerHTML = 'You\'re in West Berlin!'
         } else {
-          msg.innerText = 'You aren\'t in the West Berlin!'
+          msg.innerHTML = 'You aren\'t in the West Berlin!'
         }
+      }, () => {
+        msg.innerHTML = 'Unable to retrieve location';
       });
     } else {
-      msg.innerText = 'Geolocation unavailable ☠️'
+      msg.innerHTML = 'Geolocation unavailable ☠️'
     }
-});
+  });
 </script>
