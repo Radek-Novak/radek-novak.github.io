@@ -1,21 +1,16 @@
 <!doctype html>
+<meta charset="utf-8">
 <title>Am I in East or West Berlin</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 <style>
 body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 18px;
+  font-size: 16px;
 }
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 button {
   border: 1px solid red;
   font-size: inherit;
@@ -23,7 +18,7 @@ button {
 }
 </style>
 
-<button id="start">Am I in East or West Berlin</button>
+<button id="start">Am I in East or West Berlin?</button>
 <p id="msg"></p>
 
 
@@ -2188,7 +2183,7 @@ button {
         if (inWest) {
           msg.innerHTML = 'You\'re in West Berlin!'
         } else {
-          msg.innerHTML = 'You aren\'t in the West Berlin!'
+          msg.innerHTML = 'You are <b>not<b> in the West Berlin!'
         }
       }, err => {
         const {code, message} = err
