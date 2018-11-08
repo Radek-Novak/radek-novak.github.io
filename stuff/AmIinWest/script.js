@@ -24,30 +24,17 @@ const setMsg = message => {
   msg.innerHTML = message;
 };
 
-const getWall = () => {
-  const wallCoords = localStorage.getItem('berlin-wall')
-
-  if (!wallCoords) {
-    return fetch('./berlin-wall.json').then(resp => resp.json()).then(fetchedWallCoords => {
-      localStorage.setItem('berlin-wall', JSON.stringify(fetchedWallCoords))
-      return fetchedWallCoords
+const getCoordinates = file => {
+  const coords = localStorage.getItem(file)
+  
+  if (!coords) {
+    return fetch(`./${file}.json`).then(resp => resp.json()).then(fetchedCoords => {
+      localStorage.setItem(file, JSON.stringify(fetchedCoords))
+      return fetchedCoords
     });
   }
-
-  return Promise.resolve(wallCoords)
-}
-
-const getBerlinBorder = () => {
-  const berlinCoords = localStorage.getItem('berlin-border')
-
-  if (!berlinCoords) {
-    return fetch('./berlin-border.json').then(resp => resp.json()).then(fetchedBerlinCoords => {
-      localStorage.setItem('berlin-border', JSON.stringify(fetchedBerlinCoords))
-      return fetchedBerlinCoords
-    });
-  }
-
-  return Promise.resolve(berlinCoords)
+  
+  return Promise.resolve(coords)
 }
 
 btn.addEventListener('click', () => {
@@ -55,12 +42,13 @@ btn.addEventListener('click', () => {
   if ("geolocation" in navigator) {
     navigator.geolocation.getCurrentPosition(position => {
       const { latitude, longitude } = position.coords;
-      getWall().then(wallCoords => {
+      getCoordinates('berlin-wall').then(wallCoords => {
         const inWest = inside([latitude, longitude], wallCoords)
+
         if (inWest) {
           setMsg('You\'re in West Berlin!')
         } else {
-          getBerlinBorder().then(berlinCoords => {
+          getCoordinates('berlin-border').then(berlinCoords => {
             const inBerlin = inside([latitude, longitude], berlinCoords)
             if (inBerlin) {
               setMsg('You are the East Berlin!')
