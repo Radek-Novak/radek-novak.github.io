@@ -26,7 +26,7 @@ const setMsg = message => {
   msg.innerHTML = message;
 };
 
-const getMapUrl = (lat, lon) => `http://www.openstreetmap.org/export/embed.html?bbox=13.0476,52.6855,13.7769,52.3181&layer=mapnik&marker=${lat},${lon}`
+const getMapUrl = (lat, lon) => `//www.openstreetmap.org/export/embed.html?bbox=13.0476,52.6855,13.7769,52.3181&layer=mapnik&marker=${lat},${lon}`
 const setCoords = (lat, lon) => {
   map.setAttribute('src', getMapUrl(lat, lon));
   coords.innerHTML = `Coords: ${lat}, ${lon}`
