@@ -20,9 +20,12 @@ function inside(point, vs) {
 
 const btn = document.getElementById('start');
 const msg = document.getElementById('msg');
+const map = document.getElementById('map');
 const setMsg = message => {
   msg.innerHTML = message;
 };
+
+const getMapUrl = (lat, lon) => `http://www.openstreetmap.org/export/embed.html?bbox=13.0476,52.6855,13.7769,52.3181&layer=mapnik&marker=${lat},${lon}`
 
 const getCoordinates = file => {
   const coords = localStorage.getItem(file)
@@ -42,6 +45,8 @@ btn.addEventListener('click', () => {
   if ("geolocation" in navigator) {
     navigator.geolocation.getCurrentPosition(position => {
       const { latitude, longitude } = position.coords;
+      map.setAttribute('src', getMapUrl(latitude, longitude));
+
       getCoordinates('berlin-wall').then(wallCoords => {
         const inWest = inside([latitude, longitude], wallCoords)
 
@@ -55,7 +60,7 @@ btn.addEventListener('click', () => {
             } else {
               setMsg('You are the outside of Berlin!')
             }
-          })
+          });
         }
       })
     }, err => {
