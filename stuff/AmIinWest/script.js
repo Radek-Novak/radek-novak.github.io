@@ -46,13 +46,20 @@ const getCoordinates = file => {
   return Promise.resolve(coords)
 }
 
+const isValidCoord = coord => !isNaN(coord) && typeof coord === 'number';
+const validCoords = (lat, lon) => isValidCoord(lat) && isValidCoord(lon)
+
 btn.addEventListener('click', () => {
   setMsg('Finding your location...')
   if ("geolocation" in navigator) {
     navigator.geolocation.getCurrentPosition(position => {
       const { latitude, longitude } = position.coords;
+      if (!validCoords(latitude, longitude)) {
+        setMsg(`<b>Invalid coords</b>`);
+        throw new Error('Coords are not valid')
+      }
+      
       setCoords(latitude, longitude);
-
       getCoordinates('berlin-wall').then(wallCoords => {
         const inWest = inside([latitude, longitude], wallCoords)
 
