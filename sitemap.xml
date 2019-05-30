@@ -8,24 +8,24 @@
   </url>
   
   <url>
-    <loc>https://radeknovak.net/post/deutsch/</loc>
-    <lastmod>2018-09-30T21:14:47+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://radeknovak.net/</loc>
     <lastmod>2018-09-30T21:14:47+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://radeknovak.net/categories/</loc>
+    <loc>https://radeknovak.net/deutsch/</loc>
+    <lastmod>2018-09-30T21:14:47+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://radeknovak.net/post/</loc>
+    <loc>https://radeknovak.net/deutsch/deutsch/</loc>
     <lastmod>2018-09-30T21:14:47+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://radeknovak.net/categories/</loc>
     <priority>0</priority>
   </url>
   
