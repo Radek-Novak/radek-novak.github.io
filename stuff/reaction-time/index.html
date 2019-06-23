@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<title>Reaction time</title>
+<style>
+  body {
+    font-family: Helvetica Neue, Helvetica, sans-serif;
+  }
+  .wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    left: 0;
+    top: 0;
+    position: fixed;
+  }
+  .dot {
+    border-radius: 50%;
+    background-color: rgb(255, 196, 0);
+    width: 7vh;
+    height: 7vh;
+  }
+  .dot.active {
+    background-color: blue;
+  }
+  .dot.big {
+    width: 21vh;
+    height: 21vh;
+  }
+  #times {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100px;
+  }
+  #msg {
+    max-width: 50vw;
+    text-align: center;
+    overflow: auto;
+  }
+  kbd.key {
+    border-radius: 3px;
+    padding: 1px 2px 0;
+    border: 1px solid black;
+  }
+  #indicators {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  .row {
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+
+<body>
+  <div class="wrapper">
+    <div id="msg">
+      Click on the screen or press <kbd class="key">spacebar</kbd> to start the
+      timer. Then click or press <kbd class="key">spacebar</kbd> as fast as possible when the dot changes color to blue.
+    </div>
+    <div class="dot" id="dot"></div>
+  </div>
+  <p id="times">
+    <div id="indicators">
+      <strong>
+        Medians
+      </strong>
+      <div class="row">
+        <label>
+          regular
+        </label>
+        <input id="regular" readonly/>
+      </div>
+      <div class="row">
+        <label>
+          large
+        </label>
+        <input id="big" readonly/>
+      </div>
+    </div>
+  </p>
+</body>
+<script>
+  // msg | orange | blue
+  // paused | waiting | fire
+  const STATE = {
+    FIRE: "FIRE",
+    WAITING: "WAITING",
+    PAUSED: "PAUSED"
+  };
+  const dot = document.getElementById("dot");
+  const wrapper = document.getElementsByClassName("wrapper")[0];
+  const times = document.getElementById("times");
+  const msg = document.getElementById("msg");
+  const regular = document.getElementById("regular");
+  const big = document.getElementById("big");
+  const setActive = (isActive, isBig) => {
+    if (isActive) {
+      dot.classList.add("active");
+      isBig && dot.classList.add("big");
+    } else {
+      dot.classList.remove("active");
+      dot.classList.remove("big");
+    }
+  };
+
+  const showMsg = show => {
+    msg.style.opacity = show ? 1 : 0;
+    dot.style.opacity = show ? 0 : 1;
+  };
+
+  let lastTimestamp = null;
+  let timeHandle = null;
+  let state = STATE.PAUSED;
+  let wasBig = false;
+  let order = 0;
+  const regularTimes = [];
+  const bigTimes = [];
+
+  const startTimer = () => {
+    timeHandle = setTimeout(() => {
+      wasBig = Math.random() > 1 - (order % 10) / 10;
+      setActive(true, wasBig);
+      lastTimestamp = Date.now();
+      state = STATE.FIRE;
+    }, 1000 + Math.random() * 2000);
+  };
+
+  const getMedian = arr => {
+    if (arr.length === 1) return arr[0];
+    const even = arr.length % 2 === 0;
+    const middle = arr.length / 2
+    const sorted = arr.sort((a, b) => a - b);
+    if (even) {
+      return (sorted[middle - 1] + sorted[middle]) / 2
+    }
+    return sorted[~~middle];
+  }
+  const updateMedians = () => {
+    regular.value = getMedian(regularTimes);
+    big.value = getMedian(bigTimes);
+  }
+
+  const stopTimer = () => {
+    clearTimeout(timeHandle);
+  };
+
+  const handler = () => {
+    switch (state) {
+      case STATE.PAUSED:
+        showMsg(false);
+        startTimer();
+        state = STATE.WAITING;
+        break;
+      case STATE.FIRE:
+        const time = Date.now() - lastTimestamp;
+        showMsg(true);
+        wasBig ? bigTimes.push(time) : regularTimes.push(time);
+        order++;
+        times.innerHTML += `${time}ms ${wasBig ? "(BIG)" : ""}<br />`;
+        state = STATE.PAUSED;
+        break;
+      case STATE.WAITING:
+        stopTimer();
+        lastTimestamp = null;
+        showMsg(true);
+        times.innerHTML += `too soon! <br />`;
+        state = STATE.PAUSED;
+        break;
+    }
+
+    setActive(false);
+    wasBig = false;
+    updateMedians();
+  };
+
+  wrapper.addEventListener("click", handler);
+  window.addEventListener("keydown", () => {
+    if (event.code === "Space") handler();
+  });
+</script>
