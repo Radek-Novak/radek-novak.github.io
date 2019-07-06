@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <title>Reaction time</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   body {
     font-family: Helvetica Neue, Helvetica, sans-serif;
@@ -28,11 +29,20 @@
     width: 21vh;
     height: 21vh;
   }
-  #times {
-    position: fixed;
+  #indicators, #times {
+    position: absolute;
+    color: rgba(0,0,0,0.5);
     right: 0;
+    width: 70px;
+    font-size: 0.7rem;
+  }
+  #times {
     top: 0;
-    width: 100px;
+  }
+  #indicators {
+    bottom: 0;
+    overflow: hidden;
+    padding: 1rem;
   }
   #msg {
     max-width: 50vw;
@@ -43,11 +53,6 @@
     border-radius: 3px;
     padding: 1px 2px 0;
     border: 1px solid black;
-  }
-  #indicators {
-    position: absolute;
-    bottom: 0;
-    right: 0;
   }
   .row {
     display: flex;
@@ -72,13 +77,13 @@
         <label>
           regular
         </label>
-        <input id="regular" readonly/>
+        <output id="regular"></output>
       </div>
       <div class="row">
         <label>
           large
         </label>
-        <input id="big" readonly/>
+        <output id="big"></output>
       </div>
     </div>
   </p>
@@ -108,7 +113,7 @@
   };
 
   const showMsg = show => {
-    msg.style.opacity = show ? 1 : 0;
+    msg.style.display = show ? 'block' : 'none';
     dot.style.opacity = show ? 0 : 1;
   };
 
@@ -140,8 +145,8 @@
     return sorted[~~middle];
   }
   const updateMedians = () => {
-    regular.value = getMedian(regularTimes);
-    big.value = getMedian(bigTimes);
+    regular.innerText = getMedian(regularTimes);
+    big.innerText = getMedian(bigTimes);
   }
 
   const stopTimer = () => {
