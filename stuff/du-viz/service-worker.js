@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/stuff/du-viz/precache-manifest.9b2c9a6ef1339f30d55c52611e799515.js"
+  "/stuff/du-viz/precache-manifest.9747ccc96e9b906e8edf4ff6f3d13681.js"
 );
 
 self.addEventListener('message', (event) => {
